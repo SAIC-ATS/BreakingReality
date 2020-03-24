@@ -1,6 +1,6 @@
 {
 "companyName": "DefaultCompany",
-"productName": "Physics demo",
+"productName": "PhysicsDemo",
 "dataUrl": "physicsDemo.data.unityweb",
 "wasmCodeUrl": "physicsDemo.wasm.code.unityweb",
 "wasmFrameworkUrl": "physicsDemo.wasm.framework.unityweb",
