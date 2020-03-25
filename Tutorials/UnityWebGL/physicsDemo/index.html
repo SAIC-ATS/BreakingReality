@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  
     <!-- These tags are needed for enabling experimental Chrome APIs via Chrome's Origin-Trial program (Android, Windows): https://github.com/GoogleChrome/OriginTrials/blob/gh-pages/available-trials.md#current-experimental-features -->
     <!-- Origin Trial Token, feature = Generic Sensors, origin = https://github.io, expires = 2018-04-10 -->
     <meta http-equiv="origin-trial" data-feature="Generic Sensors" data-expires="2018-04-10" content="Aokv0ODVMUPIswIBi6DnpAIjhWefEd8gD8GpVgdYgETj0C5+/3kKMzZE/FOrBwHcpBO6LHuVRrIw3yOT8EMmJAYAAABQeyJvcmlnaW4iOiJodHRwczovL2dpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiR2VuZXJpY1NlbnNvciIsImV4cGlyeSI6MTUyMzMxODQwMH0=">
@@ -13,7 +14,7 @@
     <link rel="icon" href="favicon.ico">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="stylesheet" type="text/css" href="styles/webxr.css">
-
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="lib/telemetry.js"></script>
     <script>
       MozillaResearch.telemetry.start({
@@ -48,32 +49,16 @@
             document.dispatchEvent(new CustomEvent('UnityLoaded'));
           }
         }
-	    
-	module.exports.Component=registerComponent("device-orientation-permission-ui",{schema:{enabled:{default:!0}},
-		init:function(){var e=this;if(this.data.enabled){
-	if("localhost"!==location.hostname&&"127.0.0.1"!==location.hostname&&"http:"===location.protocol&&this.showHTTPAlert(),utils.device.isMobileDeviceRequestingDesktopSite())
-		return void this.showMobileDesktopModeAlert();
-	if("undefined"==typeof DeviceOrientationEvent||!DeviceOrientationEvent.requestPermission)
-		return void(this.permissionGranted=!0);
-			this.onDeviceMotionDialogAllowClicked=bind(this.onDeviceMotionDialogAllowClicked,this),
-			this.onDeviceMotionDialogDenyClicked=bind(this.onDeviceMotionDialogDenyClicked,this),
-				DeviceOrientationEvent.requestPermission().catch(function(){e.devicePermissionDialogEl=createPermissionDialog("This immersive website requires access to your device motion sensors.",e.onDeviceMotionDialogAllowClicked,e.onDeviceMotionDialogDenyClicked),e.el.appendChild(e.devicePermissionDialogEl)}).then(function(){e.el.emit("deviceorientationpermissiongranted"),e.permissionGranted=!0})}},remove:function(){this.devicePermissionDialogEl&&this.el.removeChild(this.devicePermissionDialogEl)},onDeviceMotionDialogDenyClicked:function(){this.remove()},showMobileDesktopModeAlert:function(){var e=this,t=createAlertDialog("Set your browser to request the mobile version of the site and reload the page to enjoy immersive mode.",function(){e.el.removeChild(t)});this.el.appendChild(t)},showHTTPAlert:function(){var e=this,t=createAlertDialog("Access this site over HTTPS to enter VR mode and grant access to the device sensors.",function(){e.el.removeChild(t)});this.el.appendChild(t)},onDeviceMotionDialogAllowClicked:function(){var e=this;this.el.emit("deviceorientationpermissionrequested"),DeviceOrientationEvent.requestPermission().then(function(t){"granted"===t?(e.el.emit("deviceorientationpermissiongranted"),e.permissionGranted=!0):e.el.emit("deviceorientationpermissionrejected"),e.remove()}).catch(console.error)}});
-		function setResult(result) {
-		  document.getElementById('result').innerHTML = 'RESULT: ' + result;
-		}
     </script>
 	 
   </head>
   <body>
-	  <button onclick="testDeviceOrientation()">Test Device Orientation</button>
 <br /><br />
 <div id="result"></div>
     <div id="loader">
       <div id="loading" class="loading">Loading</div>
       <div id="progress" class="progress"></div>
-    </div>
-    
-    
+    </div> 
 
     <div id="game">
       <div id="gameContainer"></div>
