@@ -50,6 +50,7 @@
           }
         }
     </script>
+	 
   </head>
   <body>
     <div id="loader">
@@ -57,11 +58,7 @@
       <div id="progress" class="progress"></div>
     </div>
     
-    <div class="full-width-block">
-	<div *ngIf="ifIOS" (click)="requestPermissionsIOS()" 
-		class="hidden-overlay" [ngClass]="{'hide': overlayClicked }">
-	</div>
-</div>
+    
 
     <div id="game">
       <div id="gameContainer"></div>
@@ -84,6 +81,7 @@
 
     <script src="vendor/gl-matrix-min.js"></script>
     <script src="webxr.js"></script>
+<scripr src="permission.js"></script>
   </body>
 
 </html>
