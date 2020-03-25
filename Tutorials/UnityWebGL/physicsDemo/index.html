@@ -49,27 +49,15 @@
           }
         }
 	    
-		function testDeviceOrientation() {
-		  if (typeof DeviceOrientationEvent !== 'function') {
-		    return setResult('DeviceOrientationEvent not detected')
-		  }
-		  if (typeof DeviceOrientationEvent.requestPermission !== 'function') {
-		    return setResult('DeviceOrientationEvent.requestPermission not detected')
-		  }
-		  DeviceOrientationEvent.requestPermission().then(function(result) {
-		    return setResult(result);
-		  });
-		DeviceMotionEvent.requestPermission()
-		.then(response => {
-		  if (response == 'granted') {
-		    window.addEventListener('devicemotion', (e) => {
-		      // do something with e
-		    })
-		  }
-		})
-		.catch(console.error)
-				}
-
+	module.exports.Component=registerComponent("device-orientation-permission-ui",{schema:{enabled:{default:!0}},
+		init:function(){var e=this;if(this.data.enabled){
+	if("localhost"!==location.hostname&&"127.0.0.1"!==location.hostname&&"http:"===location.protocol&&this.showHTTPAlert(),utils.device.isMobileDeviceRequestingDesktopSite())
+		return void this.showMobileDesktopModeAlert();
+	if("undefined"==typeof DeviceOrientationEvent||!DeviceOrientationEvent.requestPermission)
+		return void(this.permissionGranted=!0);
+			this.onDeviceMotionDialogAllowClicked=bind(this.onDeviceMotionDialogAllowClicked,this),
+			this.onDeviceMotionDialogDenyClicked=bind(this.onDeviceMotionDialogDenyClicked,this),
+				DeviceOrientationEvent.requestPermission().catch(function(){e.devicePermissionDialogEl=createPermissionDialog("This immersive website requires access to your device motion sensors.",e.onDeviceMotionDialogAllowClicked,e.onDeviceMotionDialogDenyClicked),e.el.appendChild(e.devicePermissionDialogEl)}).then(function(){e.el.emit("deviceorientationpermissiongranted"),e.permissionGranted=!0})}},remove:function(){this.devicePermissionDialogEl&&this.el.removeChild(this.devicePermissionDialogEl)},onDeviceMotionDialogDenyClicked:function(){this.remove()},showMobileDesktopModeAlert:function(){var e=this,t=createAlertDialog("Set your browser to request the mobile version of the site and reload the page to enjoy immersive mode.",function(){e.el.removeChild(t)});this.el.appendChild(t)},showHTTPAlert:function(){var e=this,t=createAlertDialog("Access this site over HTTPS to enter VR mode and grant access to the device sensors.",function(){e.el.removeChild(t)});this.el.appendChild(t)},onDeviceMotionDialogAllowClicked:function(){var e=this;this.el.emit("deviceorientationpermissionrequested"),DeviceOrientationEvent.requestPermission().then(function(t){"granted"===t?(e.el.emit("deviceorientationpermissiongranted"),e.permissionGranted=!0):e.el.emit("deviceorientationpermissionrejected"),e.remove()}).catch(console.error)}});
 		function setResult(result) {
 		  document.getElementById('result').innerHTML = 'RESULT: ' + result;
 		}
