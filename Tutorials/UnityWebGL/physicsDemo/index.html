@@ -56,6 +56,12 @@
       <div id="loading" class="loading">Loading</div>
       <div id="progress" class="progress"></div>
     </div>
+    
+    <div class="full-width-block">
+	<div *ngIf="ifIOS" (click)="requestPermissionsIOS()" 
+		class="hidden-overlay" [ngClass]="{'hide': overlayClicked }">
+	</div>
+</div>
 
     <div id="game">
       <div id="gameContainer"></div>
