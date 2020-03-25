@@ -1,24 +1,14 @@
-if (typeof DeviceMotionEvent.requestPermission === 'function') {
-  // iOS 13+
-  DeviceMotionEvent.requestPermission()
-.then(response => {
-  if (response == 'granted') {
-    window.addEventListener('devicemotion', (e) => {
-      // do something with e
-    })
+function onClick() {
+    // feature detect
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+      DeviceOrientationEvent.requestPermission()
+        .then(permissionState => {
+          if (permissionState === 'granted') {
+            window.addEventListener('deviceorientation', () => {});
+          }
+        })
+        .catch(console.error);
+    } else {
+      // handle regular non iOS 13+ devices
+    }
   }
-})
-.catch(console.error)
-
-DeviceOrientationEvent.requestPermission()
-.then(response => {
-  if (response == 'granted') {
-    window.addEventListener('deviceorientation', (e) => {
-      // do something with e
-    })
-  }
-})
-.catch(console.error)
-} else {
-  // non iOS 13+
-}
