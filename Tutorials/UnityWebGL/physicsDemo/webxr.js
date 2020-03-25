@@ -1,17 +1,6 @@
 (function () {
   'use strict';
-  function testDeviceOrientation() {
-  if (typeof DeviceOrientationEvent !== 'function') {
-    return setResult('DeviceOrientationEvent not detected')
-  }
-  if (typeof DeviceOrientationEvent.requestPermission !== 'function') {
-    return setResult('DeviceOrientationEvent.requestPermission not detected')
-  }
-  DeviceOrientationEvent.requestPermission().then(function(result) {
-    return setResult(result);
-  });
-}
-
+  
 function setResult(result) {
   document.getElementById('result').innerHTML = 'RESULT: ' + result;
 }
