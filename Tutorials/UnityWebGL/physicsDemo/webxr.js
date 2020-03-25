@@ -1,9 +1,5 @@
 (function () {
   'use strict';
-  
-function setResult(result) {
-  document.getElementById('result').innerHTML = 'RESULT: ' + result;
-}
 
   function XRData() {
     this.leftProjectionMatrix = mat4.create();
