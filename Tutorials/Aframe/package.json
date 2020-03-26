@@ -1,0 +1,12 @@
+{
+  "name": "breakingReality-tutorial",
+  "version": "1.0.0",
+  "description": "multi-user virtual reality",
+  "scripts": {
+    "start": "node server.js"
+  },
+  
+  "dependencies": {
+    "networked-aframe": "^0.7.0"
+  }
+}
