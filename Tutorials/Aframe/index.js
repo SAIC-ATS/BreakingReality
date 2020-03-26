@@ -13,7 +13,7 @@ const port = process.env.PORT || 8080;
 const app = express();
 app.use(express.static('public'));
 
-/ Start Express http server
+// Start Express http server
 const webServer = http.createServer(app);
 const io = require("socket.io")(webServer);
 
