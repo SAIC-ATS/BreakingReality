@@ -4,7 +4,7 @@ const path = require("path");
 const express = require("express"); // web framework external module
 
 // Set process name
-process.title = "networked-aframe-server";
+process.title = "breakingreality-aframe-server";
 
 // Get port or default to 8080
 const port = process.env.PORT || 8080;
@@ -13,20 +13,7 @@ const port = process.env.PORT || 8080;
 const app = express();
 app.use(express.static('public'));
 
-// Serve the example and build the bundle in development.
-if (process.env.NODE_ENV === "development") {
-  const webpackMiddleware = require("webpack-dev-middleware");
-  const webpack = require("webpack");
-  const config = require("../webpack.dev");
-
-  app.use(
-    webpackMiddleware(webpack(config), {
-      publicPath: "/dist/"
-    })
-  );
-}
-
-// Start Express http server
+/ Start Express http server
 const webServer = http.createServer(app);
 const io = require("socket.io")(webServer);
 
