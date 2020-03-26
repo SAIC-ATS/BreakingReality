@@ -5,8 +5,15 @@
   "scripts": {
     "start": "node server.js"
   },
-  
+
   "dependencies": {
     "networked-aframe": "^0.7.0"
+  },
+
+  "engines": {
+    "node":"8.10.0"
+  },
+  "repository": {
+    "url": "https://saic-ats.github.io/BreakingReality/Tutorials/Aframe/public/index.html"
   }
 }
