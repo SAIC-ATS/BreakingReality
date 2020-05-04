@@ -1,0 +1,50 @@
+<!--Diego-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="../lib/p5.js"></script>
+  <script src="../lib/p5.sound.min.js"></script>
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <meta charset="utf-8">
+
+</head>
+
+<body>
+  <script src="../sketch.js"></script>
+  <div class="p-8 h-full w-full flex-col" style="max-width: 2400px">
+    <header class="flex-row">
+      <h1 class="text-6xl font-bold">Diego Lechuga</h1>
+      <h2 class="text-4xl font-italic">Place Diego's title here</h2>
+
+    </header>
+    <!--side image-->
+    <div class="flex flex-row flex-1 h-full">
+      <div class="mt-10 h-full w-1/4">
+        <img style="max-width: 320px; max-height: 320px;" src="../assets/Diego-SplashImage.jpg"></img>
+      </div>
+      <!--Content-->
+      <div class="flex w-full">
+        <div class="mainpage mt-10 h-full w-3/4 lg:w-2/3 ml-auto mr-auto">
+          <h3 class="text-2xl font-bold">Description:</h3>
+          <p>Place Diego's description here. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--buttons-->
+  <div class="flex mb-10 text-center content-center h-full sm:w-full md:w-1/2 ml-auto mr-auto" style="float:center">
+    <button
+      class="block bg-teal-400 font-bold ml-10 mt-10 hover:text-orange-500 hover:bg-white focus:outline-none py-2 px-4 rounded"
+      onclick="window.open('../index.html')">Enter the Experience</button>
+    <button
+      class="block bg-teal-400 font-bold ml-10 mt-10 hover:text-orange-500 hover:bg-white focus:outline-none py-2 px-4 rounded"
+      onclick="window.location.href = '../index.html'">Return to Main Page</button>
+  </div>
+
+</body>
+</html>
