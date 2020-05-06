@@ -12,3 +12,10 @@ canvas {
   height: 32rem;
 }
 
+a:link{
+color: #4fd1c5;
+}
+
+a:hover{
+color: #ed8936;
+}
